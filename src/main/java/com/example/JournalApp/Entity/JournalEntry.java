@@ -1,0 +1,27 @@
+package com.example.JournalApp.Entity;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
+
+@Document()
+@Data
+@NoArgsConstructor
+public class JournalEntry {
+
+    @Id
+    public ObjectId id;
+    @NonNull
+    public String title;
+
+    public String content;
+
+    public LocalDateTime date;
+
+
+}
