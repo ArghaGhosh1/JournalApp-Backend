@@ -53,14 +53,13 @@ public class JournalEntryService {
         try {
             Users user = userService.findByUser(username);
             removed = user.getJournalEntries().removeIf(x -> x.getId().equals(id));
-            if(removed){
+            if (removed) {
                 userService.saveUser(user);
                 journalEntryRepo.deleteById(id);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
-            throw new RuntimeException("an error oucored while deleting the entry.",e);
+            throw new RuntimeException("an error oucored while deleting the entry.", e);
         }
         return removed;
     }
