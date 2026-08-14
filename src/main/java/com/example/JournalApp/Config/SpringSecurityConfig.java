@@ -28,7 +28,18 @@ public class SpringSecurityConfig {
     }
 
 
+    // 2. Authentication Provider
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
 
+        DaoAuthenticationProvider provider =
+                new DaoAuthenticationProvider();
+
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder());
+
+        return provider;
+    }
 
 
     // 3. Security Filter Chain
